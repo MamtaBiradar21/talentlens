@@ -1,1 +1,1 @@
-web: python ai_resume_website/app.py
+web: gunicorn ai_resume_website.app:app
