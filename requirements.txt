@@ -6,5 +6,6 @@ werkzeug
 scikit-learn
 requests
 python-docx
-gunicorn
 pdfplumber
+sentence-transformers
+gunicorn
