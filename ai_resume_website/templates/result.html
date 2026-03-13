@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>TalentLens | Resume Results</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">
+TalentLens
+<span class="tagline">AI Career Intelligence</span>
+</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="results-header">
+<h1>Resume Analysis Report</h1>
+<p>Your personalized AI-powered career insights</p>
+</section>
+
+<section class="results fade-in">
+
+<!-- ATS SCORE -->
+<div class="card">
+<h2>ATS Compatibility Score</h2>
+
+<div class="progress-container">
+<div class="progress-bar" data-width="{{ ats_score }}" style="width:0;">
+{{ ats_score }}%
+</div>
+</div>
+
+<h4>Score Breakdown</h4>
+<ul>
+<li>Keyword Optimization: {{ ats_breakdown.keyword }}/20</li>
+<li>Resume Sections: {{ ats_breakdown.sections }}/20</li>
+<li>Contact Information: {{ ats_breakdown.contact }}/20</li>
+<li>Grammar Quality: {{ ats_breakdown.grammar }}/20</li>
+<li>Resume Length: {{ ats_breakdown.length }}/20</li>
+</ul>
+</div>
+
+<!-- RESUME STRENGTH -->
+<div class="card">
+<h2>AI Resume Strength</h2>
+
+<div class="progress-container">
+<div class="progress-bar" data-width="{{ resume_strength_score }}" style="width:0;">
+{{ resume_strength_score }}%
+</div>
+</div>
+
+<p style="margin-top:10px;font-weight:600;">
+{{ strength_label }}
+</p>
+</div>
+
+<!-- BEST MATCH -->
+<div class="card">
+<h2>Best Career Match</h2>
+
+<p class="highlight-role">{{ best_match.title() }}</p>
+
+<p>
+Your resume skills align with the requirements for this role.
+</p>
+</div>
+
+<!-- SKILLS -->
+<div class="card">
+<h2>Extracted Skills</h2>
+
+{% if skills %}
+<div class="tags">
+{% for skill in skills %}
+<span class="tag">{{ skill.title() }}</span>
+{% endfor %}
+</div>
+{% else %}
+<p>No skills detected.</p>
+{% endif %}
+
+</div>
+
+<!-- MATCHING SKILLS -->
+<div class="card">
+<h2>Matching Skills</h2>
+
+{% if matched_skills %}
+<div class="tags">
+{% for skill in matched_skills.split(",") %}
+<span class="tag success">{{ skill.title() }}</span>
+{% endfor %}
+</div>
+{% else %}
+<p>No matching skills found.</p>
+{% endif %}
+
+</div>
+
+<!-- MISSING SKILLS -->
+<div class="card">
+<h2>Skills to Improve</h2>
+
+{% if missing_skills %}
+<div class="tags">
+{% for skill in missing_skills.split(",") %}
+<span class="tag danger">{{ skill.title() }}</span>
+{% endfor %}
+</div>
+{% else %}
+<p>No missing skills detected.</p>
+{% endif %}
+
+</div>
+
+</section>
+
+<div style="text-align:center;margin:40px 0;">
+
+<form action="/" method="GET" style="display:inline-block;margin-right:10px;">
+<button class="btn-primary">Upload Another Resume</button>
+</form>
+
+<form action="/compare" method="GET" style="display:inline-block;">
+<button class="btn-secondary">Compare Resumes</button>
+</form>
+
+</div>
+
+<footer>
+<p>© 2026 TalentLens</p>
+</footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+document.querySelectorAll(".progress-bar").forEach(function(bar){
+
+let width = bar.getAttribute("data-width") || 0;
+
+bar.style.width = width + "%";
+
+if(width >= 75)
+bar.style.backgroundColor = "#4caf50";
+else if(width >= 50)
+bar.style.backgroundColor = "orange";
+else
+bar.style.backgroundColor = "red";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

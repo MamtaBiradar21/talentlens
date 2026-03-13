@@ -1,0 +1,22 @@
+job_role,skills
+Data Analyst,"python,pandas,sql,data visualization,power bi,tableau,statistics,data cleaning,critical thinking,problem solving,data storytelling"
+Web Developer,"html,css,javascript,flask,react,api integration,responsive design"
+Machine Learning Engineer,"python,machine learning,scikit-learn,deep learning,tensorflow,model training,feature engineering"
+Software Engineer,"java,python,oop,data structures,algorithms,git,system design"
+
+Teacher,"curriculum development,lesson planning,classroom instruction,student assessment,subject expertise"
+Doctor,"medical diagnosis,clinical examination,patient treatment,prescription writing,healthcare management"
+Accountant,"financial reporting,tax filing,bookkeeping,balance sheet preparation,accounts reconciliation"
+Graphic Designer,"photoshop,illustrator,branding,visual identity,typography,layout design"
+HR Manager,"talent acquisition,employee relations,payroll management,performance appraisal,workforce planning"
+Digital Marketer,"seo,google analytics,content strategy,email marketing,paid advertising,campaign optimization"
+
+Makeup Artist,"makeup application,bridal makeup,high fashion makeup,airbrush makeup,color correction,skin analysis,beauty consultation,cosmetology"
+Fashion Designer,"fashion illustration,pattern making,garment construction,textile knowledge,fashion styling"
+Photographer,"camera handling,photo editing,lighting setup,portrait photography,event photography"
+Chef,"food preparation,culinary techniques,menu design,food presentation,kitchen management"
+Entrepreneur,"business strategy,market research,financial planning,startup development,investor pitching"
+Sales Executive,"lead generation,client acquisition,crm software,negotiation techniques,sales closing"
+Content Creator,"script writing,video editing,content strategy,audience engagement,platform optimization"
+Fitness Trainer,"workout planning,exercise physiology,client fitness assessment,nutrition guidance,personal training"
+Interior Designer,"space planning,3d modeling,autocad,color theory,furniture layout"

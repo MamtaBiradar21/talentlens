@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | TalentLens</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="logo">
+        TalentLens
+        <span class="tagline">AI Career Intelligence</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" class="active">About</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- ================= ABOUT SECTION ================= -->
+<section class="results-header">
+    <h1>About TalentLens</h1>
+    <p>AI-powered career intelligence platform</p>
+</section>
+
+<section class="results">
+
+    <div class="card">
+        <h2>What We Do</h2>
+        <p>
+            TalentLens analyzes resumes using Artificial Intelligence 
+            to extract skills, evaluate resume strength, identify 
+            skill gaps, and match users with the most suitable career paths.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Why It Matters</h2>
+        <p>
+            Many students are unsure about their career direction. 
+            TalentLens bridges the gap between education and industry 
+            by providing data-driven career insights.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Future Vision</h2>
+        <p>
+            We aim to build a connected career ecosystem where users 
+            can improve their skills, connect with similar profiles, 
+            and grow professionally.
+        </p>
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 TalentLens. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

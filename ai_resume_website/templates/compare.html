@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Resumes | TalentLens</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .mini-progress {
+            background: #eee;
+            border-radius: 8px;
+            height: 18px;
+            width: 120px;
+            overflow: hidden;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .mini-bar {
+            height: 100%;
+            transition: width 0.6s ease-in-out;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background: #007BFF;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .strength-label {
+            font-weight: 600;
+        }
+
+        .strong { color: #28a745; }
+        .moderate { color: #ff9800; }
+        .weak { color: #dc3545; }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        TalentLens
+        <span class="tagline">AI Career Intelligence</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/compare">Compare</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<section class="results-header">
+    <h1>Resume Comparison Dashboard</h1>
+</section>
+
+<section class="results">
+    <div class="card">
+        <h2>Comparison Overview</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Match %</th>
+                    <th>Strength</th>
+                    <th>Best Role</th>
+                    <th>Matched Skills</th>
+                    <th>Missing Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for resume in resumes %}
+                <tr>
+                    <td>{{ resume.filename }}</td>
+
+                    <td>
+                        {% if resume.skill_match_percentage >= 75 %}
+                            {% set bar_color = "#28a745" %}
+                        {% elif resume.skill_match_percentage >= 50 %}
+                            {% set bar_color = "#ff9800" %}
+                        {% else %}
+                            {% set bar_color = "#dc3545" %}
+                        {% endif %}
+
+                        <div class="mini-progress">
+                            <div class="mini-bar"
+                                 style="width: {{ resume.skill_match_percentage }}%;
+                                        background: {{ bar_color }};">
+                            </div>
+                        </div>
+
+                        {{ resume.skill_match_percentage }}%
+                    </td>
+
+                    <td>
+                        {% if resume.skill_match_percentage >= 75 %}
+                            <span class="strength-label strong">Strong</span>
+                        {% elif resume.skill_match_percentage >= 50 %}
+                            <span class="strength-label moderate">Moderate</span>
+                        {% else %}
+                            <span class="strength-label weak">Needs Improvement</span>
+                        {% endif %}
+                    </td>
+
+                    <td>{{ resume.best_match }}</td>
+
+                    <td>
+                        {{ resume.matched_skills if resume.matched_skills else "None" }}
+                    </td>
+
+                    <td>
+                        {{ resume.missing_skills if resume.missing_skills else "None" }}
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+        {% if resumes|length == 0 %}
+            <p style="margin-top:20px;">No resumes uploaded yet.</p>
+        {% endif %}
+
+    </div>
+</section>
+
+<footer style="text-align:center; margin-top:40px;">
+    <p>© 2026 TalentLens</p>
+</footer>
+
+</body>
+</html>
