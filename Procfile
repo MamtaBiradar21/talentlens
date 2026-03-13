@@ -1,1 +1,1 @@
-web: gunicorn ai_resume_website.app:app
+web: gunicorn app:app
