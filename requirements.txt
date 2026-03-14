@@ -9,3 +9,5 @@ python-docx
 pdfplumber
 sentence-transformers
 gunicorn
+pandas
+numpy
